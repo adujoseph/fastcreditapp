@@ -6,6 +6,79 @@ import {configureStore} from './src/store/Store';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Register2 from './src/screen/register2/Register2';
+import {Colors} from './src/constant/theme';
+import {
+  configureFonts,
+  DefaultTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+
+const fontConfig = {
+  web: {
+    regular: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    light: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    thin: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+  },
+  ios: {
+    regular: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    light: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    thin: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+  },
+  android: {
+    regular: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    light: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+    thin: {
+      fontFamily: 'Century Gothic',
+      fontWeight: 'normal',
+    },
+  },
+};
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: Colors.primary,
+    accent: Colors.secondary,
+  },
+  fonts: configureFonts(fontConfig),
+};
 
 const store = configureStore();
 const App = () => {
@@ -27,7 +100,9 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <Register2 />
+        <PaperProvider theme={theme}>
+          <Routes />
+        </PaperProvider>
       </Provider>
     </>
   );

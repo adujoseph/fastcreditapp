@@ -112,7 +112,7 @@ const AuthScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text>Enter Phone Number</Text>
         <TextField
-          label="Create Password"
+          label="Phone Number"
           value={phone}
           onChangeText={text => setPhone(text)}
           placeholder="Phone Number"

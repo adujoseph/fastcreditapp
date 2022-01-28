@@ -23,7 +23,7 @@ const SplashScreen = ({navigation, currentLang}) => {
     console.log('Is first time: ', isFirstTime);
 
     if (!isFirstTime) {
-      // navigation.replace(login);
+      navigation.replace(login);
     } else {
       if (token) {
         getUserByPhone(phone_num);
