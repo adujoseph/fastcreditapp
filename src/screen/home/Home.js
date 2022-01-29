@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   FlatList,
@@ -9,6 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import {MyText as Text} from '../../components/MyText';
 import Header from '../../components/Header';
 import {Colors} from '../../constant/theme';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';

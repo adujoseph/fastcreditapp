@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   FlatList,
@@ -15,6 +14,7 @@ import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {RFPercentage as rf} from 'react-native-responsive-fontsize';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
+import {MyText as Text} from '../../components/MyText';
 
 const Wallet = ({navigation, currentUser}) => {
   // const {name} = currentUser;

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import SupportItem from './components/SupportItem';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {MyText as Text} from '../../components/MyText';
 
 const Support = () => {
   return (

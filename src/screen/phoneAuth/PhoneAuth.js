@@ -42,7 +42,6 @@ const AuthScreen = ({navigation}) => {
     }
   };
   const confirmHandler = async () => {
-    setErrorMessage('');
     let phonenumber = `+234${Number(phone)}`;
     if (code === '') {
       setErrorMessage('enter code');
@@ -50,9 +49,15 @@ const AuthScreen = ({navigation}) => {
     }
     setLoading(true);
     try {
+      console.log(confirm);
       const {user} = await confirm.confirm(code);
       // await AsyncStorage.setItem('number', phonenumber);
-      navigation.navigate(register1, {phonenumber});
+      console.log(user);
+      if (user) {
+        navigation.navigate(register1, {phonenumber});
+      } else {
+        setErrorMessage('Invalid Code');
+      }
     } catch (err) {
       setLoading(false);
       setErrorMessage(err.message);
@@ -86,6 +91,9 @@ const AuthScreen = ({navigation}) => {
             Didn't Receive? Resend code
           </Text>
         </TouchableOpacity>
+        <View style={{paddingHorizontal: hp(1)}}>
+          <Text style={{color: 'red'}}>{errorMessage}</Text>
+        </View>
         <CustomButton
           title="Confirm"
           bgColor={Colors.primary}

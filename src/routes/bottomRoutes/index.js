@@ -10,13 +10,14 @@ import {
   Text,
 } from 'react-native';
 import {Colors} from '../../constant/theme';
-import {Details, Home, payment} from '../../constant/contant';
+import {Details, Home, payment, profile} from '../../constant/contant';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 //screens
 import HomeScreen from '../../screen/home/Home';
 import PaymentScreen from '../../screen/payment/Payment';
 import NotificationScreen from '../../screen/history/History';
 import ProfileScreen from '../../screen/profile/ProfileScreen';
+import ProfileStack from './ProfileStack';
 import DetailsScreen from '../../screen/productDetails/ProductDetails';
 import SupportScreen from '../../screen/support/Support';
 import WalletScreen from '../../screen/wallet/Wallet';
@@ -122,7 +123,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
                     solid
                   />
                 )}
-                <Text>Person</Text>
+                <Text>Profile</Text>
               </View>
             )}
             {index === 4 && (
@@ -172,7 +173,7 @@ const BottomTabBottom = () => {
           style: {backgroundColor: 'red'},
         }}
       />
-      <Tabs.Screen name={'profile'} component={ProfileScreen} />
+      <Tabs.Screen name={profile} component={ProfileStack} />
       <Tabs.Screen name={'profile2'} component={ProfileScreen} />
     </Tabs.Navigator>
   );

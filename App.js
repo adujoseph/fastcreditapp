@@ -81,6 +81,7 @@ const theme = {
 };
 
 const store = configureStore();
+
 const App = () => {
   (async function getAppToken() {
     try {

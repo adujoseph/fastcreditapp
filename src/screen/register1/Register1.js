@@ -129,12 +129,17 @@ const RegisterScreen1 = ({navigation, route}) => {
       };
       console.log(payload);
       const response = await auth_request(url, payload);
-      console.log(response);
+      console.log('response: ', response.data.message);
       if (response.status === 200) {
-        console.log(response);
-        // handle error before navigation
+        console.log('200: ', response);
         navigation.navigate(register2, {number});
         setLoading(false);
+      } else if (response.status === 409) {
+        setLoading(false);
+        setErrorMessage(response.data.message);
+        console.log('409', response.data.message);
+      } else {
+        setErrorMessage(response.data.message);
       }
     } catch (err) {
       setLoading(false);
@@ -145,7 +150,10 @@ const RegisterScreen1 = ({navigation, route}) => {
 
   return (
     <>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}>
         <View style={styles.labelView}>
           <MyText style={styles.labelText}>
             Create an account to get started
@@ -214,7 +222,7 @@ const RegisterScreen1 = ({navigation, route}) => {
             open={open}
             date={date}
             mode="date"
-            // minimumDate={new Date()}
+            minimumDate={new Date(20 - 10 - 2000)}
             onDateChange={d => setDate(d)}
             onConfirm={date => {
               setOpen(false);
@@ -285,9 +293,11 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: hp(5),
     flex: 1,
-    paddingHorizontal: hp(3),
-    paddingBottom: hp(5),
+    paddingHorizontal: hp(4),
     backgroundColor: Colors.white,
+  },
+  contentContainer: {
+    paddingBottom: hp(8),
   },
   labelView: {
     paddingVertical: hp(1.5),

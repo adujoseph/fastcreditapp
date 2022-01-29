@@ -31,17 +31,17 @@ const RegisterScreen2 = ({navigation, route}) => {
   const [uploadFile, setUploadFile] = useState([]);
   const [selectedFileType, setSelectedFileType] = useState('');
 
-  // let number = route.params.number;
+  let number = route.params.number;
 
-  // console.log(number);
+  console.log(number);
 
-  // useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', () => {
-  //     // getUserByPhone(number);
-  //   });
-  //   return unsubscribe;
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [navigation]);
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // getUserByPhone(number);
+    });
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation]);
 
   const uploadHandler = async () => {
     console.log('Experiment starts here>>>>>>>>>>>>');

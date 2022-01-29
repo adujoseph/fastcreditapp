@@ -6,12 +6,13 @@ import * as Animatable from 'react-native-animatable';
 import {login, loginscreen, dash} from '../../constant/contant';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {get_request} from '../../services/makeRequest';
+import Video from 'react-native-video';
 
 const SplashScreen = ({navigation, currentLang}) => {
   useEffect(() => {
     setTimeout(() => {
       handleRouteOptions();
-    }, 3000);
+    }, 1000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation]);
 
@@ -28,7 +29,7 @@ const SplashScreen = ({navigation, currentLang}) => {
       if (token) {
         getUserByPhone(phone_num);
       } else {
-        navigation.replace(loginscreen);
+        navigation.replace(login);
       }
     }
   };
@@ -53,7 +54,7 @@ const SplashScreen = ({navigation, currentLang}) => {
   return (
     <>
       <View style={styles.container}>
-        <Animatable.View
+        {/* <Animatable.View
           animation="slideInDown"
           iterationCount={4}
           direction="alternate">
@@ -61,7 +62,16 @@ const SplashScreen = ({navigation, currentLang}) => {
             source={require('../../../assets/images/logo.png')}
             style={styles.imageStyle}
           />
-        </Animatable.View>
+        </Animatable.View> */}
+        <Video
+          source={require('../../../assets/videos/bgvideo.mp4')}
+          style={StyleSheet.absoluteFill}
+          muted={true}
+          repeat={false}
+          resizeMode={'cover'}
+          rate={1.0}
+          ignoreSilentSwitch={'obey'}
+        />
       </View>
     </>
   );
@@ -76,8 +86,6 @@ export default connect(mapStateToProps, null)(SplashScreen);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   imageStyle: {
     height: hp(25),
